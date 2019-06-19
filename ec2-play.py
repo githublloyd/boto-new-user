@@ -20,15 +20,15 @@ elif prog == "n":
         print("Console access only")
 
 
-list = group_list.list_groups(MaxItems=150)
-for "GroupName" in list:
-        print(list)
+list = group_list.list_groups()
+groups = list['Groups']
+print(groups)
+index = 1
 
+for group in groups:
+        print("%d: %s" % (index, group["GroupName"]))
+        index +=1
 
-
-
-float(input("Please pick a Group {}".format(attach)))
-
-#var = attach_group.attach_group_policy(GroupName=attach, PolicyArn='aws:aws:iam::aws:policy/')
-
-#print(response, prog)
+option = int(input("Please pick a Group number: "))
+arn = groups[option-1]["Arn"]
+print("You selected option %d: %s" % (option, arn))
