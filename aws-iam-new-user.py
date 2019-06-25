@@ -1,5 +1,5 @@
 import boto3
-
+import re
 
 iam = boto3.resource('iam')
 iam_keys = boto3.client('iam')
@@ -7,9 +7,15 @@ group_list = boto3.client('iam')
 attach_group = boto3.client('iam')
 grp = boto3.client("iam")
 
-
+#regex = '^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$'
+# have response run through regex to ensure email address validation
 user = raw_input("Please enter your e-user address: ")
-response = iam.create_user(UserName=user)
+#if re.match("\A(?P<name>[\w\-_]+)@(?P<domain>[\w\-_]+).(?P<toplevel>[\w]+)\Z",user,re.IGNORECASE):
+        response = iam.create_user(UserName=user)
+        print("Email address accepted")
+else:
+        print("Email address is invalid")
+        exit()
 
 
 access = raw_input("Do you require programmatic access?(y/n): ") 

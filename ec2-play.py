@@ -20,7 +20,7 @@ response = iam.create_user(UserName=user)
 access = raw_input("Do you require programmatic access?(y/n): ") 
 if access == "y":
         iam_keys.create_access_key(UserName=user)
-        print("Make sure awscli is installed on your machine")
+        print("Make sure AWSCLI is installed on your machine")
 elif access == "n":
         print("Console access only")
 ######################################################################
